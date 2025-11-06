@@ -1,0 +1,259 @@
+[
+  {
+    "id": "1",
+    "numeroRecibo": "REC-20250128-0001",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "1",
+    "personaNombre": "Juan Pérez García",
+    "items": [
+      {
+        "materialId": "1",
+        "nombreMaterial": "Acero",
+        "peso": 45.5,
+        "precioUnitario": 2.50,
+        "subtotal": 113.75
+      },
+      {
+        "materialId": "2",
+        "nombreMaterial": "Cartón",
+        "peso": 120.0,
+        "precioUnitario": 0.80,
+        "subtotal": 96.00
+      }
+    ],
+    "fechaEmision": "2025-01-28T09:30:00.000Z",
+    "total": 209.75
+  },
+  {
+    "id": "2",
+    "numeroRecibo": "REC-20250129-0002",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "2",
+    "personaNombre": "María López Rodríguez",
+    "items": [
+      {
+        "materialId": "3",
+        "nombreMaterial": "Plástico PET",
+        "peso": 80.0,
+        "precioUnitario": 1.20,
+        "subtotal": 96.00
+      },
+      {
+        "materialId": "7",
+        "nombreMaterial": "Vidrio",
+        "peso": 150.0,
+        "precioUnitario": 0.30,
+        "subtotal": 45.00
+      }
+    ],
+    "fechaEmision": "2025-01-29T10:15:00.000Z",
+    "total": 141.00
+  },
+  {
+    "id": "3",
+    "numeroRecibo": "REC-20250130-0003",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "3",
+    "personaNombre": "Carlos Sánchez Mendoza",
+    "items": [
+      {
+        "materialId": "4",
+        "nombreMaterial": "Aluminio",
+        "peso": 25.5,
+        "precioUnitario": 3.50,
+        "subtotal": 89.25
+      },
+      {
+        "materialId": "6",
+        "nombreMaterial": "Papel Blanco",
+        "peso": 95.0,
+        "precioUnitario": 0.60,
+        "subtotal": 57.00
+      }
+    ],
+    "fechaEmision": "2025-01-30T11:45:00.000Z",
+    "total": 146.25
+  },
+  {
+    "id": "4",
+    "numeroRecibo": "REC-20250131-0004",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "4",
+    "personaNombre": "Rosa Torres Vega",
+    "items": [
+      {
+        "materialId": "5",
+        "nombreMaterial": "Cobre",
+        "peso": 15.0,
+        "precioUnitario": 12.00,
+        "subtotal": 180.00
+      },
+      {
+        "materialId": "8",
+        "nombreMaterial": "Bronce",
+        "peso": 20.0,
+        "precioUnitario": 8.50,
+        "subtotal": 170.00
+      }
+    ],
+    "fechaEmision": "2025-01-31T14:20:00.000Z",
+    "total": 350.00
+  },
+  {
+    "id": "5",
+    "numeroRecibo": "REC-20250201-0005",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "5",
+    "personaNombre": "Luis Ramírez Castro",
+    "items": [
+      {
+        "materialId": "10",
+        "nombreMaterial": "Fierro",
+        "peso": 200.0,
+        "precioUnitario": 1.80,
+        "subtotal": 360.00
+      },
+      {
+        "materialId": "2",
+        "nombreMaterial": "Cartón",
+        "peso": 85.0,
+        "precioUnitario": 0.80,
+        "subtotal": 68.00
+      }
+    ],
+    "fechaEmision": "2025-02-01T08:50:00.000Z",
+    "total": 428.00
+  },
+  {
+    "id": "6",
+    "numeroRecibo": "REC-20250202-0006",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "6",
+    "personaNombre": "Ana Flores Díaz",
+    "items": [
+      {
+        "materialId": "1",
+        "nombreMaterial": "Acero",
+        "peso": 65.0,
+        "precioUnitario": 2.50,
+        "subtotal": 162.50
+      },
+      {
+        "materialId": "9",
+        "nombreMaterial": "Plástico HDPE",
+        "peso": 45.5,
+        "precioUnitario": 1.00,
+        "subtotal": 45.50
+      }
+    ],
+    "fechaEmision": "2025-02-02T13:30:00.000Z",
+    "total": 208.00
+  },
+  {
+    "id": "7",
+    "numeroRecibo": "REC-20250203-0007",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "8",
+    "personaNombre": "Carmen Vargas Silva",
+    "items": [
+      {
+        "materialId": "3",
+        "nombreMaterial": "Plástico PET",
+        "peso": 110.0,
+        "precioUnitario": 1.20,
+        "subtotal": 132.00
+      },
+      {
+        "materialId": "4",
+        "nombreMaterial": "Aluminio",
+        "peso": 18.5,
+        "precioUnitario": 3.50,
+        "subtotal": 64.75
+      },
+      {
+        "materialId": "6",
+        "nombreMaterial": "Papel Blanco",
+        "peso": 75.0,
+        "precioUnitario": 0.60,
+        "subtotal": 45.00
+      }
+    ],
+    "fechaEmision": "2025-02-03T10:15:00.000Z",
+    "total": 241.75
+  },
+  {
+    "id": "8",
+    "numeroRecibo": "REC-20250204-0008",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "1",
+    "personaNombre": "Juan Pérez García",
+    "items": [
+      {
+        "materialId": "10",
+        "nombreMaterial": "Fierro",
+        "peso": 150.0,
+        "precioUnitario": 1.80,
+        "subtotal": 270.00
+      }
+    ],
+    "fechaEmision": "2025-02-04T09:00:00.000Z",
+    "total": 270.00
+  },
+  {
+    "id": "9",
+    "numeroRecibo": "REC-20250204-0009",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "2",
+    "personaNombre": "María López Rodríguez",
+    "items": [
+      {
+        "materialId": "5",
+        "nombreMaterial": "Cobre",
+        "peso": 8.5,
+        "precioUnitario": 12.00,
+        "subtotal": 102.00
+      },
+      {
+        "materialId": "1",
+        "nombreMaterial": "Acero",
+        "peso": 55.0,
+        "precioUnitario": 2.50,
+        "subtotal": 137.50
+      }
+    ],
+    "fechaEmision": "2025-02-04T15:30:00.000Z",
+    "total": 239.50
+  },
+  {
+    "id": "10",
+    "numeroRecibo": "REC-20250205-0010",
+    "nombreCliente": "Centro de Reciclaje",
+    "personaId": "3",
+    "personaNombre": "Carlos Sánchez Mendoza",
+    "items": [
+      {
+        "materialId": "2",
+        "nombreMaterial": "Cartón",
+        "peso": 180.0,
+        "precioUnitario": 0.80,
+        "subtotal": 144.00
+      },
+      {
+        "materialId": "7",
+        "nombreMaterial": "Vidrio",
+        "peso": 200.0,
+        "precioUnitario": 0.30,
+        "subtotal": 60.00
+      },
+      {
+        "materialId": "9",
+        "nombreMaterial": "Plástico HDPE",
+        "peso": 70.0,
+        "precioUnitario": 1.00,
+        "subtotal": 70.00
+      }
+    ],
+    "fechaEmision": "2025-02-05T11:20:00.000Z",
+    "total": 274.00
+  }
+]

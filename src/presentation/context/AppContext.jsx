@@ -1,9 +1,10 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { LocalStorageMaterialRepository } from '../../infrastructure/repositories/LocalStorageMaterialRepository';
 import { LocalStorageReciboRepository } from '../../infrastructure/repositories/LocalStorageReciboRepository';
 import { LocalStoragePersonaRepository } from '../../infrastructure/repositories/LocalStoragePersonaRepository';
 import { LocalStorageTransportistaRepository } from '../../infrastructure/repositories/LocalStorageTransportistaRepository';
 import { LocalStorageGuiaRemisionRepository } from '../../infrastructure/repositories/LocalStorageGuiaRemisionRepository';
+import { DataInitializationService } from '../../infrastructure/services/DataInitializationService';
 import { CreateMaterial } from '../../application/use-cases/material/CreateMaterial';
 import { GetAllMaterials } from '../../application/use-cases/material/GetAllMaterials';
 import { UpdateMaterial } from '../../application/use-cases/material/UpdateMaterial';
@@ -26,6 +27,13 @@ import { GetGuiaRemisionById } from '../../application/use-cases/guia-remision/G
 const AppContext = createContext(null);
 
 export const AppProvider = ({ children }) => {
+  // Inicializar datos mock al montar el componente
+  useEffect(() => {
+    DataInitializationService.initializeAllData().catch(error => {
+      console.error('Error al inicializar datos:', error);
+    });
+  }, []);
+
   // Inicializar repositorios
   const materialRepository = new LocalStorageMaterialRepository();
   const reciboRepository = new LocalStorageReciboRepository();

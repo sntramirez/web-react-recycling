@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "nombre": "Acero",
+    "precioPorKg": 2.50,
+    "activo": true,
+    "fechaCreacion": "2025-01-01T08:00:00.000Z",
+    "fechaActualizacion": "2025-01-15T10:30:00.000Z"
+  },
+  {
+    "id": "2",
+    "nombre": "Cartón",
+    "precioPorKg": 0.80,
+    "activo": true,
+    "fechaCreacion": "2025-01-01T08:00:00.000Z",
+    "fechaActualizacion": "2025-01-15T10:30:00.000Z"
+  },
+  {
+    "id": "3",
+    "nombre": "Plástico PET",
+    "precioPorKg": 1.20,
+    "activo": true,
+    "fechaCreacion": "2025-01-01T08:00:00.000Z",
+    "fechaActualizacion": "2025-01-20T14:45:00.000Z"
+  },
+  {
+    "id": "4",
+    "nombre": "Aluminio",
+    "precioPorKg": 3.50,
+    "activo": true,
+    "fechaCreacion": "2025-01-01T08:00:00.000Z",
+    "fechaActualizacion": "2025-01-20T14:45:00.000Z"
+  },
+  {
+    "id": "5",
+    "nombre": "Cobre",
+    "precioPorKg": 12.00,
+    "activo": true,
+    "fechaCreacion": "2025-01-01T08:00:00.000Z",
+    "fechaActualizacion": "2025-02-01T09:15:00.000Z"
+  },
+  {
+    "id": "6",
+    "nombre": "Papel Blanco",
+    "precioPorKg": 0.60,
+    "activo": true,
+    "fechaCreacion": "2025-01-05T10:00:00.000Z",
+    "fechaActualizacion": "2025-02-01T09:15:00.000Z"
+  },
+  {
+    "id": "7",
+    "nombre": "Vidrio",
+    "precioPorKg": 0.30,
+    "activo": true,
+    "fechaCreacion": "2025-01-05T10:00:00.000Z",
+    "fechaActualizacion": "2025-01-25T11:20:00.000Z"
+  },
+  {
+    "id": "8",
+    "nombre": "Bronce",
+    "precioPorKg": 8.50,
+    "activo": true,
+    "fechaCreacion": "2025-01-10T12:00:00.000Z",
+    "fechaActualizacion": "2025-02-01T09:15:00.000Z"
+  },
+  {
+    "id": "9",
+    "nombre": "Plástico HDPE",
+    "precioPorKg": 1.00,
+    "activo": true,
+    "fechaCreacion": "2025-01-10T12:00:00.000Z",
+    "fechaActualizacion": "2025-01-28T16:30:00.000Z"
+  },
+  {
+    "id": "10",
+    "nombre": "Fierro",
+    "precioPorKg": 1.80,
+    "activo": true,
+    "fechaCreacion": "2025-01-01T08:00:00.000Z",
+    "fechaActualizacion": "2025-02-03T13:45:00.000Z"
+  }
+]

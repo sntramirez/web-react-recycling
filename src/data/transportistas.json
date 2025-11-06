@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "nombre": "Roberto",
+    "apellido": "Chávez Morales",
+    "licencia": "Q43256789",
+    "telefono": "989765432",
+    "empresa": "Transportes Rápidos SAC",
+    "activo": true,
+    "fechaRegistro": "2025-01-03T08:00:00.000Z",
+    "fechaActualizacion": "2025-01-03T08:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "nombre": "Miguel",
+    "apellido": "Fernández Luna",
+    "licencia": "Q40987654",
+    "telefono": "945123789",
+    "empresa": "Logística Express EIRL",
+    "activo": true,
+    "fechaRegistro": "2025-01-05T10:30:00.000Z",
+    "fechaActualizacion": "2025-01-05T10:30:00.000Z"
+  },
+  {
+    "id": "3",
+    "nombre": "Jorge",
+    "apellido": "Quispe Huamán",
+    "licencia": "Q42567890",
+    "telefono": "967234567",
+    "empresa": "",
+    "activo": true,
+    "fechaRegistro": "2025-01-08T14:15:00.000Z",
+    "fechaActualizacion": "2025-01-08T14:15:00.000Z"
+  },
+  {
+    "id": "4",
+    "nombre": "Alberto",
+    "apellido": "Rojas Villanueva",
+    "licencia": "Q45123678",
+    "telefono": "923456123",
+    "empresa": "Transporte Nacional SA",
+    "activo": true,
+    "fechaRegistro": "2025-01-12T09:45:00.000Z",
+    "fechaActualizacion": "2025-01-12T09:45:00.000Z"
+  },
+  {
+    "id": "5",
+    "nombre": "Raúl",
+    "apellido": "Mendoza Campos",
+    "licencia": "Q41678234",
+    "telefono": "956789234",
+    "empresa": "",
+    "activo": true,
+    "fechaRegistro": "2025-01-15T11:20:00.000Z",
+    "fechaActualizacion": "2025-01-15T11:20:00.000Z"
+  },
+  {
+    "id": "6",
+    "nombre": "Fernando",
+    "apellido": "García Prado",
+    "licencia": "Q44890123",
+    "telefono": "978345678",
+    "empresa": "Cargo Perú SAC",
+    "activo": false,
+    "fechaRegistro": "2025-01-10T13:00:00.000Z",
+    "fechaActualizacion": "2025-02-02T15:30:00.000Z"
+  }
+]

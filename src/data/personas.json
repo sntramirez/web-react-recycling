@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1",
+    "nombre": "Juan",
+    "apellido": "Pérez García",
+    "documentoIdentidad": "43256789",
+    "telefono": "987654321",
+    "direccion": "Av. Los Pinos 234, Lima",
+    "activo": true,
+    "fechaRegistro": "2025-01-05T09:30:00.000Z",
+    "fechaActualizacion": "2025-01-05T09:30:00.000Z"
+  },
+  {
+    "id": "2",
+    "nombre": "María",
+    "apellido": "López Rodríguez",
+    "documentoIdentidad": "40123456",
+    "telefono": "956789012",
+    "direccion": "Jr. Las Flores 156, Lima",
+    "activo": true,
+    "fechaRegistro": "2025-01-08T11:15:00.000Z",
+    "fechaActualizacion": "2025-01-08T11:15:00.000Z"
+  },
+  {
+    "id": "3",
+    "nombre": "Carlos",
+    "apellido": "Sánchez Mendoza",
+    "documentoIdentidad": "45678901",
+    "telefono": "923456789",
+    "direccion": "Calle Los Olivos 789, Callao",
+    "activo": true,
+    "fechaRegistro": "2025-01-10T14:20:00.000Z",
+    "fechaActualizacion": "2025-01-10T14:20:00.000Z"
+  },
+  {
+    "id": "4",
+    "nombre": "Rosa",
+    "apellido": "Torres Vega",
+    "documentoIdentidad": "42789012",
+    "telefono": "945678123",
+    "direccion": "Av. Principal 445, San Juan de Lurigancho",
+    "activo": true,
+    "fechaRegistro": "2025-01-15T10:45:00.000Z",
+    "fechaActualizacion": "2025-01-15T10:45:00.000Z"
+  },
+  {
+    "id": "5",
+    "nombre": "Luis",
+    "apellido": "Ramírez Castro",
+    "documentoIdentidad": "41234567",
+    "telefono": "967812345",
+    "direccion": "Jr. San Martín 321, Villa El Salvador",
+    "activo": true,
+    "fechaRegistro": "2025-01-18T13:30:00.000Z",
+    "fechaActualizacion": "2025-01-18T13:30:00.000Z"
+  },
+  {
+    "id": "6",
+    "nombre": "Ana",
+    "apellido": "Flores Díaz",
+    "documentoIdentidad": "44567890",
+    "telefono": "934567890",
+    "direccion": "Av. Universitaria 678, Los Olivos",
+    "activo": true,
+    "fechaRegistro": "2025-01-22T08:50:00.000Z",
+    "fechaActualizacion": "2025-01-22T08:50:00.000Z"
+  },
+  {
+    "id": "7",
+    "nombre": "Pedro",
+    "apellido": "Gutiérrez Rojas",
+    "documentoIdentidad": "46890123",
+    "telefono": "912345678",
+    "direccion": "Calle Lima 234, Ate",
+    "activo": false,
+    "fechaRegistro": "2025-01-12T16:00:00.000Z",
+    "fechaActualizacion": "2025-02-01T10:30:00.000Z"
+  },
+  {
+    "id": "8",
+    "nombre": "Carmen",
+    "apellido": "Vargas Silva",
+    "documentoIdentidad": "43890456",
+    "telefono": "978123456",
+    "direccion": "Jr. Comercio 567, Cercado de Lima",
+    "activo": true,
+    "fechaRegistro": "2025-01-25T12:15:00.000Z",
+    "fechaActualizacion": "2025-01-25T12:15:00.000Z"
+  }
+]

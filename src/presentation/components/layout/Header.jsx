@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { PermissionsService } from '../../../infrastructure/services/PermissionsService';
 import './Header.css';
 
 export const Header = ({ onNavigate, currentPage }) => {
@@ -61,24 +62,38 @@ export const Header = ({ onNavigate, currentPage }) => {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <nav className="mobile-nav">
-          <button
-            className={currentPage === 'dashboard' ? 'active' : ''}
-            onClick={() => handleNavigate('dashboard')}
-          >
-            📊 Dashboard
-          </button>
-          <button
-            className={currentPage === 'recibos' ? 'active' : ''}
-            onClick={() => handleNavigate('recibos')}
-          >
-            📝 Recibos
-          </button>
-          <button
-            className={currentPage === 'materiales' ? 'active' : ''}
-            onClick={() => handleNavigate('materiales')}
-          >
-            📦 Materiales
-          </button>
+          {PermissionsService.canAccessSection(user, 'dashboard') && (
+            <button
+              className={currentPage === 'dashboard' ? 'active' : ''}
+              onClick={() => handleNavigate('dashboard')}
+            >
+              📊 Dashboard
+            </button>
+          )}
+          {PermissionsService.canAccessSection(user, 'recibos') && (
+            <button
+              className={currentPage === 'recibos' ? 'active' : ''}
+              onClick={() => handleNavigate('recibos')}
+            >
+              📝 Recibos
+            </button>
+          )}
+          {PermissionsService.canAccessSection(user, 'materiales') && (
+            <button
+              className={currentPage === 'materiales' ? 'active' : ''}
+              onClick={() => handleNavigate('materiales')}
+            >
+              📦 Materiales
+            </button>
+          )}
+          {PermissionsService.canAccessSection(user, 'personas') && (
+            <button
+              className={currentPage === 'personas' ? 'active' : ''}
+              onClick={() => handleNavigate('personas')}
+            >
+              👥 Personas
+            </button>
+          )}
         </nav>
       </div>
     </header>

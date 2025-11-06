@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
+import { PermissionsService } from '../../infrastructure/services/PermissionsService';
 import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
 import { Table } from '../components/common/Table';
@@ -8,11 +10,18 @@ import { MaterialForm } from '../components/features/MaterialForm';
 import './MaterialesPage.css';
 
 export const MaterialesPage = () => {
+  const { user } = useAuth();
   const { getAllMaterials, createMaterial, updateMaterial, deleteMaterial } = useApp();
   const [materiales, setMateriales] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  // Verificar permisos
+  const canCreate = PermissionsService.userHasPermission(user, PermissionsService.PERMISSIONS.CREATE_MATERIAL);
+  const canEdit = PermissionsService.userHasPermission(user, PermissionsService.PERMISSIONS.EDIT_MATERIAL);
+  const canDelete = PermissionsService.userHasPermission(user, PermissionsService.PERMISSIONS.DELETE_MATERIAL);
+  const canChangePrice = PermissionsService.userHasPermission(user, PermissionsService.PERMISSIONS.CHANGE_PRICE);
 
   useEffect(() => {
     loadMateriales();
@@ -91,12 +100,19 @@ export const MaterialesPage = () => {
       header: 'Acciones',
       render: (material) => (
         <div className="table-actions">
-          <Button variant="outline" size="small" onClick={() => handleEditMaterial(material)}>
-            Editar
-          </Button>
-          <Button variant="danger" size="small" onClick={() => handleDeleteMaterial(material)}>
-            Eliminar
-          </Button>
+          {canEdit && (
+            <Button variant="outline" size="small" onClick={() => handleEditMaterial(material)}>
+              Editar
+            </Button>
+          )}
+          {canDelete && (
+            <Button variant="danger" size="small" onClick={() => handleDeleteMaterial(material)}>
+              Eliminar
+            </Button>
+          )}
+          {!canEdit && !canDelete && (
+            <span className="no-actions">Sin permisos</span>
+          )}
         </div>
       )
     }
@@ -107,9 +123,11 @@ export const MaterialesPage = () => {
       <Card
         title="Gestión de Materiales de Reciclaje"
         actions={
-          <Button onClick={handleCreateMaterial}>
-            + Nuevo Material
-          </Button>
+          canCreate && (
+            <Button onClick={handleCreateMaterial}>
+              + Nuevo Material
+            </Button>
+          )
         }
       >
         {loading ? (

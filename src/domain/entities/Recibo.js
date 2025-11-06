@@ -3,10 +3,12 @@
  * Representa un comprobante de compra de materiales de reciclaje
  */
 export class Recibo {
-  constructor(id, nombreCliente = 'Cliente General') {
+  constructor(id, nombreCliente = 'Cliente General', personaId = null, personaNombre = null) {
     this.id = id;
     this.numeroRecibo = this.generarNumeroRecibo();
     this.nombreCliente = nombreCliente;
+    this.personaId = personaId; // ID de la persona/vendedor
+    this.personaNombre = personaNombre; // Nombre completo del vendedor
     this.items = [];
     this.fechaEmision = new Date();
     this.total = 0;
@@ -72,6 +74,8 @@ export class Recibo {
       id: this.id,
       numeroRecibo: this.numeroRecibo,
       nombreCliente: this.nombreCliente,
+      personaId: this.personaId,
+      personaNombre: this.personaNombre,
       items: this.items.map(item => item.toJSON()),
       fechaEmision: this.fechaEmision.toISOString(),
       total: this.total,
@@ -82,7 +86,7 @@ export class Recibo {
    * Crea una instancia desde un objeto plano
    */
   static fromJSON(json) {
-    const recibo = new Recibo(json.id, json.nombreCliente);
+    const recibo = new Recibo(json.id, json.nombreCliente, json.personaId, json.personaNombre);
     recibo.numeroRecibo = json.numeroRecibo;
     recibo.fechaEmision = new Date(json.fechaEmision);
     recibo.items = json.items.map(item => {

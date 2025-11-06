@@ -1,11 +1,21 @@
+import { useAuth } from '../../context/AuthContext';
+import { PermissionsService } from '../../../infrastructure/services/PermissionsService';
 import './Sidebar.css';
 
 export const Sidebar = ({ currentPage, onNavigate }) => {
-  const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-    { id: 'recibos', label: 'Recibos', icon: '📝' },
-    { id: 'materiales', label: 'Materiales', icon: '📦' }
+  const { user } = useAuth();
+
+  const allMenuItems = [
+    { id: 'dashboard', label: 'Dashboard', icon: '📊', section: 'dashboard' },
+    { id: 'recibos', label: 'Recibos', icon: '📝', section: 'recibos' },
+    { id: 'materiales', label: 'Materiales', icon: '📦', section: 'materiales' },
+    { id: 'personas', label: 'Personas/Vendedores', icon: '👥', section: 'personas' }
   ];
+
+  // Filtrar items según permisos
+  const menuItems = allMenuItems.filter(item =>
+    PermissionsService.canAccessSection(user, item.section)
+  );
 
   return (
     <aside className="sidebar">

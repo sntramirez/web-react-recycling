@@ -4,12 +4,15 @@ import { Button } from '../common/Button';
 import { Table } from '../common/Table';
 import './ReciboForm.css';
 
-export const ReciboForm = ({ materiales, onSubmit, onCancel }) => {
+export const ReciboForm = ({ materiales, personas, onSubmit, onCancel }) => {
   const [nombreCliente, setNombreCliente] = useState('Cliente General');
+  const [selectedPersonaId, setSelectedPersonaId] = useState('');
   const [selectedMaterialId, setSelectedMaterialId] = useState('');
   const [peso, setPeso] = useState('');
   const [items, setItems] = useState([]);
   const [errors, setErrors] = useState({});
+
+  const personasActivas = personas ? personas.filter(p => p.activo) : [];
 
   const materialesActivos = materiales.filter(m => m.activo);
 
@@ -65,8 +68,22 @@ export const ReciboForm = ({ materiales, onSubmit, onCancel }) => {
       return;
     }
 
+    // Obtener información del vendedor si está seleccionado
+    let personaId = null;
+    let personaNombre = null;
+
+    if (selectedPersonaId && personas) {
+      const persona = personas.find(p => p.id === selectedPersonaId);
+      if (persona) {
+        personaId = persona.id;
+        personaNombre = persona.getNombreCompleto();
+      }
+    }
+
     onSubmit({
       nombreCliente: nombreCliente.trim() || 'Cliente General',
+      personaId: personaId,
+      personaNombre: personaNombre,
       items: items
     });
   };
@@ -112,11 +129,29 @@ export const ReciboForm = ({ materiales, onSubmit, onCancel }) => {
     <form onSubmit={handleSubmit} className="recibo-form">
       <div className="recibo-form-header">
         <Input
-          label="Nombre del Cliente"
+          label="Nombre del Cliente (Opcional)"
           value={nombreCliente}
           onChange={(e) => setNombreCliente(e.target.value)}
-          placeholder="Nombre del cliente"
+          placeholder="Cliente General"
         />
+
+        {personasActivas.length > 0 && (
+          <div className="input-group">
+            <label className="input-label">Vendedor (Persona que vende material)</label>
+            <select
+              value={selectedPersonaId}
+              onChange={(e) => setSelectedPersonaId(e.target.value)}
+              className="input"
+            >
+              <option value="">Seleccione un vendedor (opcional)</option>
+              {personasActivas.map(persona => (
+                <option key={persona.id} value={persona.id}>
+                  {persona.getNombreCompleto()} - {persona.documentoIdentidad}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
 
       <div className="recibo-form-add-item">

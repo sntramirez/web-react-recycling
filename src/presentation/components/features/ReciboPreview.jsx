@@ -152,6 +152,12 @@ export const ReciboPreview = ({ recibo, onClose }) => {
             <span>Cliente:</span>
             <span>{recibo.nombreCliente}</span>
           </div>
+          {recibo.personaNombre && (
+            <div className="recibo-info-row">
+              <span>Vendedor:</span>
+              <span>{recibo.personaNombre}</span>
+            </div>
+          )}
         </div>
 
         <div className="recibo-items">

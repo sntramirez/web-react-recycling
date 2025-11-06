@@ -9,8 +9,9 @@ import { Table } from '../components/common/Table';
 import './RecibosPage.css';
 
 export const RecibosPage = () => {
-  const { getAllMaterials, createRecibo, getAllRecibos, getReciboById } = useApp();
+  const { getAllMaterials, getAllPersonas, createRecibo, getAllRecibos, getReciboById } = useApp();
   const [materiales, setMateriales] = useState([]);
+  const [personas, setPersonas] = useState([]);
   const [recibos, setRecibos] = useState([]);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
@@ -24,11 +25,13 @@ export const RecibosPage = () => {
   const loadData = async () => {
     setLoading(true);
     try {
-      const [materialesData, recibosData] = await Promise.all([
+      const [materialesData, personasData, recibosData] = await Promise.all([
         getAllMaterials.execute(),
+        getAllPersonas.execute(),
         getAllRecibos.execute()
       ]);
       setMateriales(materialesData);
+      setPersonas(personasData);
       setRecibos(recibosData);
     } catch (error) {
       console.error('Error al cargar datos:', error);
@@ -144,6 +147,7 @@ export const RecibosPage = () => {
       >
         <ReciboForm
           materiales={materiales}
+          personas={personas}
           onSubmit={handleSubmitRecibo}
           onCancel={() => setIsFormModalOpen(false)}
         />

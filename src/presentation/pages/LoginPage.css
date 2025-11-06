@@ -91,7 +91,15 @@
 }
 
 .login-demo-info li {
-  margin: 4px 0;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.login-demo-info small {
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+  margin-left: 4px;
 }
 
 .login-demo-info code {

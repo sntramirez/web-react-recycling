@@ -3,16 +3,24 @@
     "id": "1",
     "username": "admin",
     "password": "admin123",
-    "nombre": "Administrador",
+    "nombre": "Administrador Principal",
     "rol": "admin",
     "email": "admin@reciclaje.com"
   },
   {
     "id": "2",
-    "username": "operador",
-    "password": "operador123",
-    "nombre": "Juan Pérez",
-    "rol": "operador",
-    "email": "operador@reciclaje.com"
+    "username": "usuario",
+    "password": "usuario123",
+    "nombre": "María González",
+    "rol": "usuario",
+    "email": "usuario@reciclaje.com"
+  },
+  {
+    "id": "3",
+    "username": "cajero",
+    "password": "cajero123",
+    "nombre": "Carlos Rodríguez",
+    "rol": "cajero",
+    "email": "cajero@reciclaje.com"
   }
 ]

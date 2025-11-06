@@ -91,8 +91,18 @@ export const LoginPage = () => {
           <div className="login-demo-info">
             <p><strong>Usuarios de prueba:</strong></p>
             <ul>
-              <li>Usuario: <code>admin</code> / Contraseña: <code>admin123</code></li>
-              <li>Usuario: <code>operador</code> / Contraseña: <code>operador123</code></li>
+              <li>
+                <strong>Admin:</strong> <code>admin</code> / <code>admin123</code>
+                <br/><small>Acceso completo: Dashboard, Recibos, Materiales (cambiar precios), Personas</small>
+              </li>
+              <li>
+                <strong>Usuario:</strong> <code>usuario</code> / <code>usuario123</code>
+                <br/><small>Dashboard + Gestión de Personas/Vendedores</small>
+              </li>
+              <li>
+                <strong>Cajero:</strong> <code>cajero</code> / <code>cajero123</code>
+                <br/><small>Solo emisión de Recibos y ver Materiales</small>
+              </li>
             </ul>
           </div>
         </div>

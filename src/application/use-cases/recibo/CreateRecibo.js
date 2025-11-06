@@ -20,7 +20,12 @@ export class CreateRecibo {
     const id = Date.now().toString();
 
     // Crear nueva entidad Recibo
-    const recibo = new Recibo(id, reciboData.nombreCliente || 'Cliente General');
+    const recibo = new Recibo(
+      id,
+      reciboData.nombreCliente || 'Cliente General',
+      reciboData.personaId || null,
+      reciboData.personaNombre || null
+    );
 
     // Agregar items al recibo
     for (const itemData of reciboData.items) {

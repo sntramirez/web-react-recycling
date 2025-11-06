@@ -1,0 +1,42 @@
+import './Table.css';
+
+export const Table = ({ columns, data, onRowClick }) => {
+  return (
+    <div className="table-container">
+      <table className="table">
+        <thead>
+          <tr>
+            {columns.map((column, index) => (
+              <th key={index} style={{ width: column.width }}>
+                {column.header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.length === 0 ? (
+            <tr>
+              <td colSpan={columns.length} className="table-empty">
+                No hay datos para mostrar
+              </td>
+            </tr>
+          ) : (
+            data.map((row, rowIndex) => (
+              <tr
+                key={rowIndex}
+                onClick={() => onRowClick && onRowClick(row)}
+                className={onRowClick ? 'table-row-clickable' : ''}
+              >
+                {columns.map((column, colIndex) => (
+                  <td key={colIndex}>
+                    {column.render ? column.render(row) : row[column.field]}
+                  </td>
+                ))}
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+};

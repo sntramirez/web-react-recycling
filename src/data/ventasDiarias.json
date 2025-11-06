@@ -1,0 +1,38 @@
+[
+  {
+    "fecha": "2025-11-01",
+    "totalVentas": 3250.50,
+    "cantidadRecibos": 12,
+    "pesoTotal": 450.5
+  },
+  {
+    "fecha": "2025-11-02",
+    "totalVentas": 2890.75,
+    "cantidadRecibos": 10,
+    "pesoTotal": 380.2
+  },
+  {
+    "fecha": "2025-11-03",
+    "totalVentas": 4120.00,
+    "cantidadRecibos": 15,
+    "pesoTotal": 520.8
+  },
+  {
+    "fecha": "2025-11-04",
+    "totalVentas": 3560.25,
+    "cantidadRecibos": 13,
+    "pesoTotal": 470.3
+  },
+  {
+    "fecha": "2025-11-05",
+    "totalVentas": 4890.50,
+    "cantidadRecibos": 18,
+    "pesoTotal": 610.5
+  },
+  {
+    "fecha": "2025-11-06",
+    "totalVentas": 3780.00,
+    "cantidadRecibos": 14,
+    "pesoTotal": 490.2
+  }
+]

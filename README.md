@@ -4,6 +4,10 @@ Aplicación web desarrollada en React con arquitectura limpia para la gestión d
 
 ## Características
 
+- ✅ **Sistema de Login y Autenticación** - Control de acceso con usuarios y roles
+- ✅ **Dashboard con Estadísticas** - Visualización de KPIs y métricas clave
+- ✅ **Gráficos Interactivos** - Análisis de ventas diarias y mensuales
+- ✅ **Tendencias de Precios** - Seguimiento de alzas y bajas de materiales
 - ✅ Gestión completa de materiales de reciclaje (CRUD)
 - ✅ Configuración de precios por kilogramo para cada material
 - ✅ Generación de recibos de compra
@@ -17,8 +21,10 @@ Aplicación web desarrollada en React con arquitectura limpia para la gestión d
 - **React 18** - Librería de UI
 - **Vite** - Build tool y dev server
 - **JavaScript (ES6+)** - Lenguaje de programación
+- **Recharts** - Librería de gráficos
 - **CSS3** - Estilos
 - **LocalStorage** - Persistencia de datos
+- **Datos Mock (JSON)** - Simulación de backend
 
 ## Arquitectura del Proyecto
 
@@ -81,6 +87,30 @@ npm run dev
 - `npm run preview` - Previsualiza la build de producción
 
 ## Funcionalidades Principales
+
+### Sistema de Autenticación
+
+La aplicación cuenta con un sistema de login que protege el acceso al sistema.
+
+**Usuarios de Prueba:**
+- **Admin**: usuario `admin` / contraseña `admin123`
+- **Operador**: usuario `operador` / contraseña `operador123`
+
+### Dashboard con Estadísticas
+
+El dashboard principal muestra:
+
+**KPIs (Indicadores Clave):**
+- Ventas del día actual
+- Ventas del mes actual
+- Promedio diario de ventas
+- Peso total procesado
+
+**Gráficos de Ventas:**
+- **Ventas Diarias**: Gráfico de área mostrando las ventas de la última semana
+- **Ventas Mensuales**: Gráfico de barras con los últimos 6 meses
+- **Top 5 Materiales**: Gráfico circular con los materiales más vendidos
+- **Tendencias de Precios**: Gráficos de línea mostrando alzas y bajas de precios
 
 ### Gestión de Materiales
 
@@ -170,11 +200,22 @@ Materiales incluidos por defecto:
 
 ## Componentes Reutilizables
 
+**Componentes Comunes:**
 - `Button` - Botones con variantes y tamaños
 - `Input` - Campos de entrada con validación
 - `Card` - Tarjetas con header y acciones
 - `Table` - Tablas responsivas con datos
 - `Modal` - Modales con overlay
+
+**Layout:**
+- `Header` - Barra superior con navegación y perfil de usuario
+- `Sidebar` - Menú lateral de navegación
+
+**Páginas:**
+- `LoginPage` - Página de inicio de sesión
+- `DashboardPage` - Dashboard con estadísticas y gráficos
+- `MaterialesPage` - Gestión de materiales
+- `RecibosPage` - Generación de recibos
 
 ## Impresión de Recibos
 
@@ -195,10 +236,18 @@ El recibo impreso incluye:
 
 ## Persistencia de Datos
 
-Los datos se almacenan en **LocalStorage** del navegador:
+Los datos se almacenan de dos formas:
 
+**LocalStorage:**
 - `materiales` - Lista de materiales
 - `recibos` - Historial de recibos
+- `currentUser` - Sesión del usuario autenticado
+
+**Datos Mock (JSON):**
+- `users.json` - Usuarios del sistema
+- `ventasDiarias.json` - Datos de ventas diarias
+- `ventasMensuales.json` - Datos de ventas mensuales
+- `tendenciaPrecios.json` - Histórico de precios
 
 **Nota**: Los datos persisten entre sesiones pero son específicos del navegador.
 

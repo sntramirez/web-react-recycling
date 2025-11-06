@@ -1,0 +1,106 @@
+[
+  {
+    "material": "Acero",
+    "historico": [
+      { "fecha": "2025-10-01", "precio": 14.50 },
+      { "fecha": "2025-10-08", "precio": 14.80 },
+      { "fecha": "2025-10-15", "precio": 15.00 },
+      { "fecha": "2025-10-22", "precio": 15.20 },
+      { "fecha": "2025-10-29", "precio": 15.50 },
+      { "fecha": "2025-11-05", "precio": 15.50 }
+    ],
+    "tendencia": "alza",
+    "cambio": 6.9
+  },
+  {
+    "material": "Cartón",
+    "historico": [
+      { "fecha": "2025-10-01", "precio": 2.20 },
+      { "fecha": "2025-10-08", "precio": 2.15 },
+      { "fecha": "2025-10-15", "precio": 2.10 },
+      { "fecha": "2025-10-22", "precio": 2.05 },
+      { "fecha": "2025-10-29", "precio": 2.00 },
+      { "fecha": "2025-11-05", "precio": 2.00 }
+    ],
+    "tendencia": "baja",
+    "cambio": -9.1
+  },
+  {
+    "material": "Plástico PET",
+    "historico": [
+      { "fecha": "2025-10-01", "precio": 7.50 },
+      { "fecha": "2025-10-08", "precio": 7.65 },
+      { "fecha": "2025-10-15", "precio": 7.80 },
+      { "fecha": "2025-10-22", "precio": 7.90 },
+      { "fecha": "2025-10-29", "precio": 8.00 },
+      { "fecha": "2025-11-05", "precio": 8.00 }
+    ],
+    "tendencia": "alza",
+    "cambio": 6.7
+  },
+  {
+    "material": "Aluminio",
+    "historico": [
+      { "fecha": "2025-10-01", "precio": 23.50 },
+      { "fecha": "2025-10-08", "precio": 24.00 },
+      { "fecha": "2025-10-15", "precio": 24.50 },
+      { "fecha": "2025-10-22", "precio": 25.00 },
+      { "fecha": "2025-10-29", "precio": 25.00 },
+      { "fecha": "2025-11-05", "precio": 25.00 }
+    ],
+    "tendencia": "alza",
+    "cambio": 6.4
+  },
+  {
+    "material": "Vidrio",
+    "historico": [
+      { "fecha": "2025-10-01", "precio": 1.50 },
+      { "fecha": "2025-10-08", "precio": 1.50 },
+      { "fecha": "2025-10-15", "precio": 1.50 },
+      { "fecha": "2025-10-22", "precio": 1.50 },
+      { "fecha": "2025-10-29", "precio": 1.50 },
+      { "fecha": "2025-11-05", "precio": 1.50 }
+    ],
+    "tendencia": "estable",
+    "cambio": 0.0
+  },
+  {
+    "material": "Papel",
+    "historico": [
+      { "fecha": "2025-10-01", "precio": 1.90 },
+      { "fecha": "2025-10-08", "precio": 1.88 },
+      { "fecha": "2025-10-15", "precio": 1.85 },
+      { "fecha": "2025-10-22", "precio": 1.82 },
+      { "fecha": "2025-10-29", "precio": 1.80 },
+      { "fecha": "2025-11-05", "precio": 1.80 }
+    ],
+    "tendencia": "baja",
+    "cambio": -5.3
+  },
+  {
+    "material": "Cobre",
+    "historico": [
+      { "fecha": "2025-10-01", "precio": 78.00 },
+      { "fecha": "2025-10-08", "precio": 80.00 },
+      { "fecha": "2025-10-15", "precio": 82.00 },
+      { "fecha": "2025-10-22", "precio": 83.50 },
+      { "fecha": "2025-10-29", "precio": 85.00 },
+      { "fecha": "2025-11-05", "precio": 85.00 }
+    ],
+    "tendencia": "alza",
+    "cambio": 9.0
+  },
+  {
+    "material": "Bronce",
+    "historico": [
+      { "fecha": "2025-10-01", "precio": 52.00 },
+      { "fecha": "2025-10-08", "precio": 53.00 },
+      { "fecha": "2025-10-15", "precio": 54.00 },
+      { "fecha": "2025-10-22", "precio": 54.50 },
+      { "fecha": "2025-10-29", "precio": 55.00 },
+      { "fecha": "2025-11-05", "precio": 55.00 }
+    ],
+    "tendencia": "alza",
+    "cambio": 5.8
+  }
+]

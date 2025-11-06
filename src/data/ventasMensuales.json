@@ -1,0 +1,79 @@
+[
+  {
+    "mes": "Enero",
+    "año": 2025,
+    "totalVentas": 85420.50,
+    "cantidadRecibos": 320,
+    "pesoTotal": 11250.8
+  },
+  {
+    "mes": "Febrero",
+    "año": 2025,
+    "totalVentas": 78950.75,
+    "cantidadRecibos": 295,
+    "pesoTotal": 10480.2
+  },
+  {
+    "mes": "Marzo",
+    "año": 2025,
+    "totalVentas": 92340.00,
+    "cantidadRecibos": 350,
+    "pesoTotal": 12150.5
+  },
+  {
+    "mes": "Abril",
+    "año": 2025,
+    "totalVentas": 88760.25,
+    "cantidadRecibos": 330,
+    "pesoTotal": 11680.3
+  },
+  {
+    "mes": "Mayo",
+    "año": 2025,
+    "totalVentas": 95280.50,
+    "cantidadRecibos": 360,
+    "pesoTotal": 12590.7
+  },
+  {
+    "mes": "Junio",
+    "año": 2025,
+    "totalVentas": 102150.00,
+    "cantidadRecibos": 385,
+    "pesoTotal": 13420.9
+  },
+  {
+    "mes": "Julio",
+    "año": 2025,
+    "totalVentas": 98540.75,
+    "cantidadRecibos": 370,
+    "pesoTotal": 12980.4
+  },
+  {
+    "mes": "Agosto",
+    "año": 2025,
+    "totalVentas": 91230.50,
+    "cantidadRecibos": 345,
+    "pesoTotal": 12045.6
+  },
+  {
+    "mes": "Septiembre",
+    "año": 2025,
+    "totalVentas": 87650.00,
+    "cantidadRecibos": 325,
+    "pesoTotal": 11560.2
+  },
+  {
+    "mes": "Octubre",
+    "año": 2025,
+    "totalVentas": 94820.25,
+    "cantidadRecibos": 355,
+    "pesoTotal": 12480.8
+  },
+  {
+    "mes": "Noviembre",
+    "año": 2025,
+    "totalVentas": 22491.00,
+    "cantidadRecibos": 82,
+    "pesoTotal": 2922.5
+  }
+]

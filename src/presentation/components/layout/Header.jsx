@@ -94,6 +94,22 @@ export const Header = ({ onNavigate, currentPage }) => {
               👥 Personas
             </button>
           )}
+          {PermissionsService.canAccessSection(user, 'transportistas') && (
+            <button
+              className={currentPage === 'transportistas' ? 'active' : ''}
+              onClick={() => handleNavigate('transportistas')}
+            >
+              🚚 Transportistas
+            </button>
+          )}
+          {PermissionsService.canAccessSection(user, 'guias') && (
+            <button
+              className={currentPage === 'guias' ? 'active' : ''}
+              onClick={() => handleNavigate('guias')}
+            >
+              📋 Guías de Remisión
+            </button>
+          )}
         </nav>
       </div>
     </header>

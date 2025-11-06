@@ -7,6 +7,8 @@ import { DashboardPage } from './presentation/pages/DashboardPage';
 import { MaterialesPage } from './presentation/pages/MaterialesPage';
 import { RecibosPage } from './presentation/pages/RecibosPage';
 import { PersonasPage } from './presentation/pages/PersonasPage';
+import { TransportistasPage } from './presentation/pages/TransportistasPage';
+import { GuiasRemisionPage } from './presentation/pages/GuiasRemisionPage';
 import { Header } from './presentation/components/layout/Header';
 import { Sidebar } from './presentation/components/layout/Sidebar';
 import './App.css';
@@ -23,6 +25,8 @@ function AppContent() {
     if (PermissionsService.canAccessSection(user, 'recibos')) return 'recibos';
     if (PermissionsService.canAccessSection(user, 'materiales')) return 'materiales';
     if (PermissionsService.canAccessSection(user, 'personas')) return 'personas';
+    if (PermissionsService.canAccessSection(user, 'transportistas')) return 'transportistas';
+    if (PermissionsService.canAccessSection(user, 'guias')) return 'guias';
 
     return 'dashboard';
   };
@@ -53,6 +57,8 @@ function AppContent() {
             {currentPage === 'recibos' && PermissionsService.canAccessSection(user, 'recibos') && <RecibosPage />}
             {currentPage === 'materiales' && PermissionsService.canAccessSection(user, 'materiales') && <MaterialesPage />}
             {currentPage === 'personas' && PermissionsService.canAccessSection(user, 'personas') && <PersonasPage />}
+            {currentPage === 'transportistas' && PermissionsService.canAccessSection(user, 'transportistas') && <TransportistasPage />}
+            {currentPage === 'guias' && PermissionsService.canAccessSection(user, 'guias') && <GuiasRemisionPage />}
           </main>
         </div>
 

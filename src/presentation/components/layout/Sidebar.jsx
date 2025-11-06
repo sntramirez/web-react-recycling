@@ -9,7 +9,9 @@ export const Sidebar = ({ currentPage, onNavigate }) => {
     { id: 'dashboard', label: 'Dashboard', icon: '📊', section: 'dashboard' },
     { id: 'recibos', label: 'Recibos', icon: '📝', section: 'recibos' },
     { id: 'materiales', label: 'Materiales', icon: '📦', section: 'materiales' },
-    { id: 'personas', label: 'Personas/Vendedores', icon: '👥', section: 'personas' }
+    { id: 'personas', label: 'Personas/Vendedores', icon: '👥', section: 'personas' },
+    { id: 'transportistas', label: 'Transportistas', icon: '🚚', section: 'transportistas' },
+    { id: 'guias', label: 'Guías de Remisión', icon: '📋', section: 'guias' }
   ];
 
   // Filtrar items según permisos

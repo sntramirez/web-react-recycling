@@ -30,6 +30,16 @@ export class PermissionsService {
     CREATE_PERSONA: 'create_persona',
     EDIT_PERSONA: 'edit_persona',
     DELETE_PERSONA: 'delete_persona',
+
+    // Transportistas
+    VIEW_TRANSPORTISTAS: 'view_transportistas',
+    CREATE_TRANSPORTISTA: 'create_transportista',
+    EDIT_TRANSPORTISTA: 'edit_transportista',
+    DELETE_TRANSPORTISTA: 'delete_transportista',
+
+    // Guías de Remisión
+    VIEW_GUIAS: 'view_guias',
+    CREATE_GUIA: 'create_guia',
   };
 
   static ROLE_PERMISSIONS = {
@@ -54,6 +64,16 @@ export class PermissionsService {
       this.PERMISSIONS.CREATE_PERSONA,
       this.PERMISSIONS.EDIT_PERSONA,
       this.PERMISSIONS.DELETE_PERSONA,
+
+      // Transportistas - Admin puede TODO
+      this.PERMISSIONS.VIEW_TRANSPORTISTAS,
+      this.PERMISSIONS.CREATE_TRANSPORTISTA,
+      this.PERMISSIONS.EDIT_TRANSPORTISTA,
+      this.PERMISSIONS.DELETE_TRANSPORTISTA,
+
+      // Guías de Remisión - Admin puede TODO
+      this.PERMISSIONS.VIEW_GUIAS,
+      this.PERMISSIONS.CREATE_GUIA,
     ],
 
     [this.ROLES.USUARIO]: [
@@ -71,6 +91,12 @@ export class PermissionsService {
       this.PERMISSIONS.CREATE_PERSONA,
       this.PERMISSIONS.EDIT_PERSONA,
       this.PERMISSIONS.DELETE_PERSONA,
+
+      // Transportistas - Usuario solo puede ver
+      this.PERMISSIONS.VIEW_TRANSPORTISTAS,
+
+      // Guías de Remisión - Usuario solo puede ver
+      this.PERMISSIONS.VIEW_GUIAS,
     ],
 
     [this.ROLES.CAJERO]: [
@@ -83,6 +109,13 @@ export class PermissionsService {
 
       // Personas - Solo ver para seleccionar vendedor
       this.PERMISSIONS.VIEW_PERSONAS,
+
+      // Transportistas - Cajero puede ver para seleccionar
+      this.PERMISSIONS.VIEW_TRANSPORTISTAS,
+
+      // Guías de Remisión - Cajero puede ver y crear
+      this.PERMISSIONS.VIEW_GUIAS,
+      this.PERMISSIONS.CREATE_GUIA,
     ],
   };
 
@@ -121,6 +154,8 @@ export class PermissionsService {
       materiales: this.PERMISSIONS.VIEW_MATERIALES,
       recibos: this.PERMISSIONS.VIEW_RECIBOS,
       personas: this.PERMISSIONS.VIEW_PERSONAS,
+      transportistas: this.PERMISSIONS.VIEW_TRANSPORTISTAS,
+      guias: this.PERMISSIONS.VIEW_GUIAS,
     };
 
     const requiredPermission = sectionPermissions[section];

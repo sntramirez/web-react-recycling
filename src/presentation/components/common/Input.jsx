@@ -2,6 +2,7 @@ import './Input.css';
 
 export const Input = ({
   label,
+  name,
   type = 'text',
   value,
   onChange,
@@ -23,6 +24,7 @@ export const Input = ({
       )}
       <input
         type={type}
+        name={name}
         value={value}
         onChange={onChange}
         placeholder={placeholder}

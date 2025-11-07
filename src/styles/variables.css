@@ -1,0 +1,97 @@
+/* ============================================
+   Sing App Theme Variables - Centro de Reciclaje
+   ============================================ */
+
+:root {
+  /* Colores Principales */
+  --primary-color: #6FB0F9;
+  --secondary-color: #798892;
+  --success-color: #68ca66;
+  --danger-color: #FF5574;
+  --warning-color: #ff7d47;
+  --info-color: #10CFD0;
+  --dark-color: #0C2236;
+
+  /* Colores Secundarios */
+  --blue: #6FB0F9;
+  --green: #68ca66;
+  --red: #FF5574;
+  --orange: #ff7d47;
+  --yellow: #EBB834;
+  --purple: #10CFD0;
+  --pink: #e54e9a;
+  --teal: #26CD5F;
+  --cyan: #17a2b8;
+  --indigo: #7f3ddb;
+
+  /* Grises */
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #798892;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
+
+  /* Colores de Fondo */
+  --body-bg: #F9FBFD;
+  --widget-bg: #ffffff;
+  --sidebar-bg: #1F2933;
+  --header-bg: #ffffff;
+
+  /* Textos */
+  --text-color: #0C2236;
+  --text-muted: #798892;
+  --text-light: #ffffff;
+
+  /* Tipografía */
+  --font-family-base: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-heading: 'Montserrat', 'Poppins', sans-serif;
+  --font-size-base: 14px;
+  --font-size-lg: 1.25rem;
+  --font-size-sm: 0.875rem;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  /* Espaciado */
+  --content-padding: 40px;
+  --content-padding-sm: 15px;
+  --widget-padding: 20px;
+  --grid-gutter: 40px;
+
+  /* Bordes */
+  --border-radius: 0.3rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-sm: 0.2rem;
+  --border-color: #e9ecef;
+
+  /* Sidebar */
+  --sidebar-width-open: 230px;
+  --sidebar-width-closed: 50px;
+  --sidebar-transition: 0.3s;
+
+  /* Header */
+  --header-height: 60px;
+
+  /* Sombras */
+  --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+  --shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  --shadow-lg: 0 1rem 3rem rgba(0,0,0,.175);
+
+  /* Transiciones */
+  --transition-base: all .3s ease-in-out;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --body-bg: #1a1d24;
+  --widget-bg: #2a2d35;
+  --text-color: #e9ecef;
+  --text-muted: #adb5bd;
+  --border-color: #3a3d45;
+  --header-bg: #2a2d35;
+}

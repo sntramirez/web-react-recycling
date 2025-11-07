@@ -1,16 +1,22 @@
+/* ============================================
+   Header Component - Sing App Style
+   ============================================ */
+
 .main-header {
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-  color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--header-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 101;
+  height: var(--header-height);
 }
 
 .header-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 16px 20px;
+  max-width: 100%;
+  height: 100%;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,25 +25,31 @@
 .header-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 .menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   background: none;
   border: none;
   padding: 8px;
   cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-base);
+}
+
+.menu-toggle:hover {
+  background-color: var(--gray-100);
 }
 
 .menu-toggle span {
   width: 24px;
-  height: 3px;
-  background-color: white;
+  height: 2px;
+  background-color: var(--text-color);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: var(--transition-base);
 }
 
 .header-logo {
@@ -47,87 +59,155 @@
 }
 
 .header-logo svg {
-  width: 40px;
-  height: 40px;
-  color: white;
+  width: 32px;
+  height: 32px;
+  color: var(--primary-color);
 }
 
 .header-logo h1 {
   margin: 0;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-heading);
   line-height: 1.2;
+  color: var(--text-color);
 }
 
 .header-logo span {
-  font-size: 12px;
-  opacity: 0.9;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: var(--font-weight-normal);
 }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
+/* Search Bar (Optional) */
+.header-search {
+  display: flex;
+  align-items: center;
+  background-color: var(--gray-100);
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+  min-width: 200px;
+}
+
+.header-search input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-color);
+  font-size: var(--font-size-sm);
+  width: 100%;
+}
+
+.header-search input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Notifications (Optional) */
+.header-notifications {
+  position: relative;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-base);
+}
+
+.header-notifications:hover {
+  background-color: var(--gray-100);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--danger-color);
+  border-radius: 50%;
+  border: 2px solid var(--header-bg);
+}
+
+/* User Info */
 .user-info {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 6px 12px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.user-info:hover {
+  background-color: var(--gray-100);
 }
 
 .user-avatar {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, var(--primary-color), var(--info-color));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: #ffffff;
+  border: 2px solid var(--border-color);
 }
 
 .user-details {
   display: flex;
   flex-direction: column;
+  line-height: 1.3;
 }
 
 .user-name {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semi-bold);
+  color: var(--text-color);
 }
 
 .user-role {
   font-size: 12px;
-  opacity: 0.9;
+  color: var(--text-muted);
   text-transform: capitalize;
 }
 
 .logout-btn {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
+  background-color: var(--danger-color);
+  color: #ffffff;
   border: none;
   padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semi-bold);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition-base);
 }
 
 .logout-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #ff4363;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
+/* Mobile Menu */
 .mobile-menu {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--widget-bg);
+  border-top: 1px solid var(--border-color);
 }
 
 .mobile-menu.open {
-  max-height: 300px;
+  max-height: 400px;
 }
 
 .mobile-nav {
@@ -139,30 +219,45 @@
 .mobile-nav button {
   background: none;
   border: none;
-  color: white;
+  color: var(--text-color);
   padding: 12px 16px;
   text-align: left;
-  font-size: 15px;
+  font-size: var(--font-size-base);
   cursor: pointer;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-base);
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .mobile-nav button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--gray-100);
 }
 
 .mobile-nav button.active {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--primary-color);
+  color: #ffffff;
 }
 
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 968px) {
   .menu-toggle {
     display: flex;
   }
 
+  .header-search {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 16px;
+  }
+
   .header-logo h1 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .header-logo span {
@@ -173,29 +268,38 @@
     display: none;
   }
 
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
   .logout-btn {
-    padding: 8px 12px;
+    padding: 6px 12px;
     font-size: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .header-container {
-    padding: 12px 10px;
+    padding: 0 12px;
   }
 
   .header-logo svg {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
 
   .header-logo h1 {
-    font-size: 14px;
+    font-size: 0.9rem;
   }
 
-  .user-avatar {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
+  .header-right {
+    gap: 12px;
+  }
+
+  .logout-btn {
+    padding: 6px 10px;
+    font-size: 11px;
   }
 }

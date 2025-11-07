@@ -42,14 +42,11 @@ export class DataInitializationService {
    * Inicializa todos los datos si no existen
    */
   static async initializeAllData() {
-    if (this.isInitialized()) {
-      console.log('Datos ya inicializados previamente');
-      return;
-    }
-
-    console.log('Inicializando datos mock...');
+    console.log('Verificando e inicializando datos mock...');
 
     try {
+      // Inicializa cada tipo de dato individualmente
+      // Cada método verifica si ya existen datos antes de inicializar
       await this.initializeMateriales();
       await this.initializePersonas();
       await this.initializeTransportistas();
@@ -57,7 +54,7 @@ export class DataInitializationService {
       await this.initializeGuiasRemision();
 
       this.markAsInitialized();
-      console.log('Datos mock inicializados exitosamente');
+      console.log('Datos mock verificados e inicializados exitosamente');
     } catch (error) {
       console.error('Error al inicializar datos mock:', error);
       throw error;

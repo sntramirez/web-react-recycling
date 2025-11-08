@@ -26,7 +26,7 @@ export class ReciboItem {
     return {
       materialId: this.materialId,
       nombreMaterial: this.nombreMaterial,
-      precioPorKg: this.precioPorKg,
+      precioUnitario: this.precioPorKg, // Usar precioUnitario en JSON
       peso: this.peso,
       unidad: this.unidad,
       subtotal: this.subtotal,
@@ -38,7 +38,14 @@ export class ReciboItem {
    */
   static fromJSON(json) {
     const item = Object.create(ReciboItem.prototype);
-    Object.assign(item, json);
+    Object.assign(item, {
+      materialId: json.materialId,
+      nombreMaterial: json.nombreMaterial,
+      precioPorKg: json.precioUnitario || json.precioPorKg, // Soportar ambos nombres
+      peso: json.peso,
+      unidad: json.unidad,
+      subtotal: json.subtotal,
+    });
     return item;
   }
 }

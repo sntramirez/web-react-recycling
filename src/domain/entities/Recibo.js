@@ -1,3 +1,5 @@
+import { ReciboItem } from './ReciboItem';
+
 /**
  * Entidad de dominio: Recibo
  * Representa un comprobante de compra de materiales de reciclaje
@@ -89,10 +91,7 @@ export class Recibo {
     const recibo = new Recibo(json.id, json.nombreCliente, json.personaId, json.personaNombre);
     recibo.numeroRecibo = json.numeroRecibo;
     recibo.fechaEmision = new Date(json.fechaEmision);
-    recibo.items = json.items.map(item => {
-      const ReciboItem = require('./ReciboItem').ReciboItem;
-      return ReciboItem.fromJSON(item);
-    });
+    recibo.items = json.items.map(item => ReciboItem.fromJSON(item));
     recibo.total = json.total;
     return recibo;
   }

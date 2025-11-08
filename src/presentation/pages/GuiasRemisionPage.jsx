@@ -202,6 +202,7 @@ export const GuiasRemisionPage = () => {
 };
 
 const GuiaRemisionForm = ({ recibos, transportistas, onSubmit, onCancel }) => {
+  const notification = useNotification();
   const [formData, setFormData] = useState({
     reciboId: '',
     transportistaId: '',
@@ -220,12 +221,17 @@ const GuiaRemisionForm = ({ recibos, transportistas, onSubmit, onCancel }) => {
     e.preventDefault();
 
     if (!formData.reciboId || !formData.transportistaId || !formData.placaVehiculo) {
-      alert('Complete los campos obligatorios');
+      notification.warning('Complete los campos obligatorios');
       return;
     }
 
     const recibo = recibos.find(r => r.id === formData.reciboId);
     const transportista = transportistas.find(t => t.id === formData.transportistaId);
+
+    if (!recibo || !transportista) {
+      notification.error('Error: No se encontró el recibo o transportista seleccionado');
+      return;
+    }
 
     const submitData = {
       reciboId: formData.reciboId,
@@ -351,6 +357,19 @@ const GuiaRemisionForm = ({ recibos, transportistas, onSubmit, onCancel }) => {
 };
 
 const GuiaRemisionPreview = ({ guia, recibo, onClose }) => {
+  const notification = useNotification();
+
+  if (!guia || !recibo || !recibo.items || !Array.isArray(recibo.items)) {
+    return (
+      <div style={{ padding: '20px', textAlign: 'center' }}>
+        <p>Error: No se puede mostrar la vista previa. Faltan datos.</p>
+        <Button onClick={onClose} variant="secondary" style={{ marginTop: '20px' }}>
+          Cerrar
+        </Button>
+      </div>
+    );
+  }
+
   const handlePrint = () => {
     window.print();
   };

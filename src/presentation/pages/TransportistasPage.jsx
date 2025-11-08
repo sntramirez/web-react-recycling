@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
+import { useNotification } from '../context/NotificationContext';
 import { PermissionsService } from '../../infrastructure/services/PermissionsService';
 import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
@@ -11,6 +12,7 @@ import './PersonasPage.css';
 
 export const TransportistasPage = () => {
   const { user } = useAuth();
+  const notification = useNotification();
   const { getAllTransportistas, createTransportista, updateTransportista, deleteTransportista } = useApp();
   const [transportistas, setTransportistas] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +34,7 @@ export const TransportistasPage = () => {
       setTransportistas(data);
     } catch (error) {
       console.error('Error al cargar transportistas:', error);
-      alert('Error al cargar los transportistas');
+      notification.error('Error al cargar los transportistas');
     } finally {
       setLoading(false);
     }
@@ -42,17 +44,17 @@ export const TransportistasPage = () => {
     try {
       if (selectedTransportista) {
         await updateTransportista.execute(selectedTransportista.id, formData);
-        alert('Transportista actualizado exitosamente');
+        notification.success('Transportista actualizado exitosamente');
       } else {
         await createTransportista.execute(formData);
-        alert('Transportista registrado exitosamente');
+        notification.success('Transportista registrado exitosamente');
       }
       setIsModalOpen(false);
       setSelectedTransportista(null);
       await loadTransportistas();
     } catch (error) {
       console.error('Error al guardar transportista:', error);
-      alert(`Error: ${error.message}`);
+      notification.error(`Error: ${error.message}`);
     }
   };
 
@@ -61,9 +63,9 @@ export const TransportistasPage = () => {
       try {
         await deleteTransportista.execute(transportista.id);
         await loadTransportistas();
-        alert('Transportista eliminado exitosamente');
+        notification.success('Transportista eliminado exitosamente');
       } catch (error) {
-        alert('Error al eliminar el transportista');
+        notification.error('Error al eliminar el transportista');
       }
     }
   };

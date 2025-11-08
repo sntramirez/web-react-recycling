@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AuthProvider, useAuth } from './presentation/context/AuthContext';
 import { AppProvider } from './presentation/context/AppContext';
+import { NotificationProvider } from './presentation/context/NotificationContext';
 import { PermissionsService } from './infrastructure/services/PermissionsService';
 import { LoginPage } from './presentation/pages/LoginPage';
 import { DashboardPage } from './presentation/pages/DashboardPage';
@@ -46,26 +47,28 @@ function AppContent() {
 
   return (
     <AppProvider>
-      <div className="app">
-        <Header onNavigate={setCurrentPage} currentPage={currentPage} />
+      <NotificationProvider>
+        <div className="app">
+          <Header onNavigate={setCurrentPage} currentPage={currentPage} />
 
-        <div className="app-container">
-          <Sidebar currentPage={currentPage} onNavigate={setCurrentPage} />
+          <div className="app-container">
+            <Sidebar currentPage={currentPage} onNavigate={setCurrentPage} />
 
-          <main className="app-main">
-            {currentPage === 'dashboard' && PermissionsService.canAccessSection(user, 'dashboard') && <DashboardPage />}
-            {currentPage === 'recibos' && PermissionsService.canAccessSection(user, 'recibos') && <RecibosPage />}
-            {currentPage === 'materiales' && PermissionsService.canAccessSection(user, 'materiales') && <MaterialesPage />}
-            {currentPage === 'personas' && PermissionsService.canAccessSection(user, 'personas') && <PersonasPage />}
-            {currentPage === 'transportistas' && PermissionsService.canAccessSection(user, 'transportistas') && <TransportistasPage />}
-            {currentPage === 'guias' && PermissionsService.canAccessSection(user, 'guias') && <GuiasRemisionPage />}
-          </main>
+            <main className="app-main">
+              {currentPage === 'dashboard' && PermissionsService.canAccessSection(user, 'dashboard') && <DashboardPage />}
+              {currentPage === 'recibos' && PermissionsService.canAccessSection(user, 'recibos') && <RecibosPage />}
+              {currentPage === 'materiales' && PermissionsService.canAccessSection(user, 'materiales') && <MaterialesPage />}
+              {currentPage === 'personas' && PermissionsService.canAccessSection(user, 'personas') && <PersonasPage />}
+              {currentPage === 'transportistas' && PermissionsService.canAccessSection(user, 'transportistas') && <TransportistasPage />}
+              {currentPage === 'guias' && PermissionsService.canAccessSection(user, 'guias') && <GuiasRemisionPage />}
+            </main>
+          </div>
+
+          <footer className="app-footer">
+            <p>&copy; 2025 Centro de Reciclaje - Sistema de Gestión</p>
+          </footer>
         </div>
-
-        <footer className="app-footer">
-          <p>&copy; 2025 Centro de Reciclaje - Sistema de Gestión</p>
-        </footer>
-      </div>
+      </NotificationProvider>
     </AppProvider>
   );
 }

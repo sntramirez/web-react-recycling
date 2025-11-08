@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
+import { useNotification } from '../context/NotificationContext';
 import { PermissionsService } from '../../infrastructure/services/PermissionsService';
 import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
@@ -11,6 +12,7 @@ import './PersonasPage.css';
 
 export const PersonasPage = () => {
   const { user } = useAuth();
+  const notification = useNotification();
   const { getAllPersonas, createPersona, updatePersona, deletePersona } = useApp();
   const [personas, setPersonas] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +35,7 @@ export const PersonasPage = () => {
       setPersonas(data);
     } catch (error) {
       console.error('Error al cargar personas:', error);
-      alert('Error al cargar las personas');
+      notification.error('Error al cargar las personas');
     } finally {
       setLoading(false);
     }
@@ -54,10 +56,10 @@ export const PersonasPage = () => {
       try {
         await deletePersona.execute(persona.id);
         await loadPersonas();
-        alert('Persona eliminada exitosamente');
+        notification.success('Persona eliminada exitosamente');
       } catch (error) {
         console.error('Error al eliminar persona:', error);
-        alert('Error al eliminar la persona');
+        notification.error('Error al eliminar la persona');
       }
     }
   };
@@ -66,17 +68,17 @@ export const PersonasPage = () => {
     try {
       if (selectedPersona) {
         await updatePersona.execute(selectedPersona.id, personaData);
-        alert('Persona actualizada exitosamente');
+        notification.success('Persona actualizada exitosamente');
       } else {
         await createPersona.execute(personaData);
-        alert('Persona registrada exitosamente');
+        notification.success('Persona registrada exitosamente');
       }
       setIsModalOpen(false);
       setSelectedPersona(null);
       await loadPersonas();
     } catch (error) {
       console.error('Error al guardar persona:', error);
-      alert(`Error: ${error.message}`);
+      notification.error(`Error: ${error.message}`);
     }
   };
 

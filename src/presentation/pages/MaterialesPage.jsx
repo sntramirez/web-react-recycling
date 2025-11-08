@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
+import { useNotification } from '../context/NotificationContext';
 import { PermissionsService } from '../../infrastructure/services/PermissionsService';
 import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
@@ -11,6 +12,7 @@ import './MaterialesPage.css';
 
 export const MaterialesPage = () => {
   const { user } = useAuth();
+  const notification = useNotification();
   const { getAllMaterials, createMaterial, updateMaterial, deleteMaterial } = useApp();
   const [materiales, setMateriales] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +36,7 @@ export const MaterialesPage = () => {
       setMateriales(data);
     } catch (error) {
       console.error('Error al cargar materiales:', error);
-      alert('Error al cargar los materiales');
+      notification.error('Error al cargar los materiales');
     } finally {
       setLoading(false);
     }
@@ -55,10 +57,10 @@ export const MaterialesPage = () => {
       try {
         await deleteMaterial.execute(material.id);
         await loadMateriales();
-        alert('Material eliminado exitosamente');
+        notification.success('Material eliminado exitosamente');
       } catch (error) {
         console.error('Error al eliminar material:', error);
-        alert('Error al eliminar el material');
+        notification.error('Error al eliminar el material');
       }
     }
   };
@@ -67,17 +69,17 @@ export const MaterialesPage = () => {
     try {
       if (selectedMaterial) {
         await updateMaterial.execute(selectedMaterial.id, materialData);
-        alert('Material actualizado exitosamente');
+        notification.success('Material actualizado exitosamente');
       } else {
         await createMaterial.execute(materialData);
-        alert('Material creado exitosamente');
+        notification.success('Material creado exitosamente');
       }
       setIsModalOpen(false);
       setSelectedMaterial(null);
       await loadMateriales();
     } catch (error) {
       console.error('Error al guardar material:', error);
-      alert(`Error: ${error.message}`);
+      notification.error(`Error: ${error.message}`);
     }
   };
 

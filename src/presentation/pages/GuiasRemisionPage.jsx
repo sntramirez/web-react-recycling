@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
+import { useNotification } from '../context/NotificationContext';
 import { PermissionsService } from '../../infrastructure/services/PermissionsService';
 import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
@@ -12,6 +13,7 @@ import './PersonasPage.css';
 
 export const GuiasRemisionPage = () => {
   const { user } = useAuth();
+  const notification = useNotification();
   const {
     getAllGuiasRemision,
     createGuiaRemision,
@@ -44,7 +46,7 @@ export const GuiasRemisionPage = () => {
       setGuias(data);
     } catch (error) {
       console.error('Error al cargar guías de remisión:', error);
-      alert('Error al cargar las guías de remisión');
+      notification.error('Error al cargar las guías de remisión');
     } finally {
       setLoading(false);
     }
@@ -71,7 +73,7 @@ export const GuiasRemisionPage = () => {
   const handleSubmitForm = async (formData) => {
     try {
       const result = await createGuiaRemision.execute(formData);
-      alert('Guía de remisión generada exitosamente');
+      notification.success('Guía de remisión generada exitosamente');
       setIsModalOpen(false);
       await loadGuias();
 
@@ -81,7 +83,7 @@ export const GuiasRemisionPage = () => {
       setIsPreviewOpen(true);
     } catch (error) {
       console.error('Error al crear guía de remisión:', error);
-      alert(`Error: ${error.message}`);
+      notification.error(`Error: ${error.message}`);
     }
   };
 

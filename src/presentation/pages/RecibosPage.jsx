@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { useNotification } from '../context/NotificationContext';
 import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
 import { Modal } from '../components/common/Modal';
@@ -9,6 +10,7 @@ import { Table } from '../components/common/Table';
 import './RecibosPage.css';
 
 export const RecibosPage = () => {
+  const notification = useNotification();
   const { getAllMaterials, getAllPersonas, createRecibo, getAllRecibos, getReciboById } = useApp();
   const [materiales, setMateriales] = useState([]);
   const [personas, setPersonas] = useState([]);
@@ -35,7 +37,7 @@ export const RecibosPage = () => {
       setRecibos(recibosData);
     } catch (error) {
       console.error('Error al cargar datos:', error);
-      alert('Error al cargar los datos');
+      notification.error('Error al cargar los datos');
     } finally {
       setLoading(false);
     }
@@ -52,9 +54,10 @@ export const RecibosPage = () => {
       setSelectedRecibo(recibo);
       setIsPreviewModalOpen(true);
       await loadData();
+      notification.success('Recibo generado exitosamente');
     } catch (error) {
       console.error('Error al crear recibo:', error);
-      alert(`Error: ${error.message}`);
+      notification.error(`Error: ${error.message}`);
     }
   };
 
@@ -65,7 +68,7 @@ export const RecibosPage = () => {
       setIsPreviewModalOpen(true);
     } catch (error) {
       console.error('Error al cargar recibo:', error);
-      alert('Error al cargar el recibo');
+      notification.error('Error al cargar el recibo');
     }
   };
 

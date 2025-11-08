@@ -21,8 +21,11 @@ export class DataInitializationService {
     TRANSPORTISTAS: 'transportistas',
     RECIBOS: 'recibos',
     GUIAS_REMISION: 'guiasRemision',
-    INITIALIZED: 'dataInitialized'
+    INITIALIZED: 'dataInitialized',
+    VERSION: 'dataVersion'
   };
+
+  static CURRENT_VERSION = '1.0.0';
 
   /**
    * Verifica si los datos ya han sido inicializados
@@ -32,31 +35,75 @@ export class DataInitializationService {
   }
 
   /**
+   * Verifica si la versión de datos es la actual
+   */
+  static isCurrentVersion() {
+    return localStorage.getItem(this.STORAGE_KEYS.VERSION) === this.CURRENT_VERSION;
+  }
+
+  /**
    * Marca los datos como inicializados
    */
   static markAsInitialized() {
     localStorage.setItem(this.STORAGE_KEYS.INITIALIZED, 'true');
+    localStorage.setItem(this.STORAGE_KEYS.VERSION, this.CURRENT_VERSION);
+  }
+
+  /**
+   * Verifica si un tipo de dato existe y es válido
+   */
+  static hasValidData(key) {
+    try {
+      const data = localStorage.getItem(key);
+      if (!data) return false;
+      const parsed = JSON.parse(data);
+      return Array.isArray(parsed) && parsed.length > 0;
+    } catch (error) {
+      console.error(`Error verificando ${key}:`, error);
+      return false;
+    }
   }
 
   /**
    * Inicializa todos los datos si no existen
    */
-  static async initializeAllData() {
-    console.log('Verificando e inicializando datos mock...');
+  static async initializeAllData(force = false) {
+    console.log('🔄 Verificando datos mock...');
+
+    // Si no es la versión actual, forzar reinicialización
+    if (!this.isCurrentVersion()) {
+      console.log('⚠️ Versión de datos desactualizada, reinicializando...');
+      force = true;
+    }
 
     try {
-      // Inicializa cada tipo de dato individualmente
-      // Cada método verifica si ya existen datos antes de inicializar
-      await this.initializeMateriales();
-      await this.initializePersonas();
-      await this.initializeTransportistas();
-      await this.initializeRecibos();
-      await this.initializeGuiasRemision();
+      // Verificar qué datos faltan
+      const needsMateriales = force || !this.hasValidData(this.STORAGE_KEYS.MATERIALES);
+      const needsPersonas = force || !this.hasValidData(this.STORAGE_KEYS.PERSONAS);
+      const needsTransportistas = force || !this.hasValidData(this.STORAGE_KEYS.TRANSPORTISTAS);
+      const needsRecibos = force || !this.hasValidData(this.STORAGE_KEYS.RECIBOS);
+      const needsGuias = force || !this.hasValidData(this.STORAGE_KEYS.GUIAS_REMISION);
+
+      // Mostrar estado
+      console.log('📊 Estado de datos:', {
+        materiales: needsMateriales ? '❌ Faltan' : '✅ OK',
+        personas: needsPersonas ? '❌ Faltan' : '✅ OK',
+        transportistas: needsTransportistas ? '❌ Faltan' : '✅ OK',
+        recibos: needsRecibos ? '❌ Faltan' : '✅ OK',
+        guias: needsGuias ? '❌ Faltan' : '✅ OK'
+      });
+
+      // Inicializar solo lo que falta
+      if (needsMateriales) await this.initializeMateriales();
+      if (needsPersonas) await this.initializePersonas();
+      if (needsTransportistas) await this.initializeTransportistas();
+      if (needsRecibos) await this.initializeRecibos();
+      if (needsGuias) await this.initializeGuiasRemision();
 
       this.markAsInitialized();
-      console.log('Datos mock verificados e inicializados exitosamente');
+      console.log('✅ Datos mock verificados e inicializados exitosamente');
     } catch (error) {
-      console.error('Error al inicializar datos mock:', error);
+      console.error('❌ Error al inicializar datos mock:', error);
       throw error;
     }
   }
@@ -65,11 +112,7 @@ export class DataInitializationService {
    * Inicializa materiales
    */
   static async initializeMateriales() {
-    const existing = localStorage.getItem(this.STORAGE_KEYS.MATERIALES);
-    if (existing && JSON.parse(existing).length > 0) {
-      console.log('Materiales ya existen en LocalStorage');
-      return;
-    }
+    console.log('📦 Inicializando materiales...');
 
     const materiales = materialesData.map(data => {
       const material = new Material(
@@ -87,18 +130,14 @@ export class DataInitializationService {
       this.STORAGE_KEYS.MATERIALES,
       JSON.stringify(materiales.map(m => m.toJSON()))
     );
-    console.log(`${materiales.length} materiales inicializados`);
+    console.log(`  ✓ ${materiales.length} materiales inicializados`);
   }
 
   /**
    * Inicializa personas/vendedores
    */
   static async initializePersonas() {
-    const existing = localStorage.getItem(this.STORAGE_KEYS.PERSONAS);
-    if (existing && JSON.parse(existing).length > 0) {
-      console.log('Personas ya existen en LocalStorage');
-      return;
-    }
+    console.log('👥 Inicializando personas...');
 
     const personas = personasData.map(data => {
       const persona = new Persona(
@@ -119,18 +158,14 @@ export class DataInitializationService {
       this.STORAGE_KEYS.PERSONAS,
       JSON.stringify(personas.map(p => p.toJSON()))
     );
-    console.log(`${personas.length} personas inicializadas`);
+    console.log(`  ✓ ${personas.length} personas inicializadas`);
   }
 
   /**
    * Inicializa transportistas
    */
   static async initializeTransportistas() {
-    const existing = localStorage.getItem(this.STORAGE_KEYS.TRANSPORTISTAS);
-    if (existing && JSON.parse(existing).length > 0) {
-      console.log('Transportistas ya existen en LocalStorage');
-      return;
-    }
+    console.log('🚚 Inicializando transportistas...');
 
     const transportistas = transportistasData.map(data => {
       const transportista = new Transportista(
@@ -151,18 +186,14 @@ export class DataInitializationService {
       this.STORAGE_KEYS.TRANSPORTISTAS,
       JSON.stringify(transportistas.map(t => t.toJSON()))
     );
-    console.log(`${transportistas.length} transportistas inicializados`);
+    console.log(`  ✓ ${transportistas.length} transportistas inicializados`);
   }
 
   /**
    * Inicializa recibos
    */
   static async initializeRecibos() {
-    const existing = localStorage.getItem(this.STORAGE_KEYS.RECIBOS);
-    if (existing && JSON.parse(existing).length > 0) {
-      console.log('Recibos ya existen en LocalStorage');
-      return;
-    }
+    console.log('📝 Inicializando recibos...');
 
     const recibos = recibosData.map(data => {
       const recibo = new Recibo(
@@ -182,18 +213,14 @@ export class DataInitializationService {
       this.STORAGE_KEYS.RECIBOS,
       JSON.stringify(recibos.map(r => r.toJSON()))
     );
-    console.log(`${recibos.length} recibos inicializados`);
+    console.log(`  ✓ ${recibos.length} recibos inicializados`);
   }
 
   /**
    * Inicializa guías de remisión
    */
   static async initializeGuiasRemision() {
-    const existing = localStorage.getItem(this.STORAGE_KEYS.GUIAS_REMISION);
-    if (existing && JSON.parse(existing).length > 0) {
-      console.log('Guías de remisión ya existen en LocalStorage');
-      return;
-    }
+    console.log('📋 Inicializando guías de remisión...');
 
     const guias = guiasRemisionData.map(data => {
       const guia = new GuiaRemision(
@@ -216,24 +243,27 @@ export class DataInitializationService {
       this.STORAGE_KEYS.GUIAS_REMISION,
       JSON.stringify(guias.map(g => g.toJSON()))
     );
-    console.log(`${guias.length} guías de remisión inicializadas`);
+    console.log(`  ✓ ${guias.length} guías de remisión inicializadas`);
   }
 
   /**
    * Limpia todos los datos (útil para testing o reset)
    */
   static clearAllData() {
+    console.log('🗑️ Limpiando todos los datos...');
     Object.values(this.STORAGE_KEYS).forEach(key => {
       localStorage.removeItem(key);
     });
-    console.log('Todos los datos han sido eliminados de LocalStorage');
+    console.log('  ✓ Todos los datos eliminados');
   }
 
   /**
    * Reinicializa todos los datos (limpia y vuelve a cargar)
    */
   static async reinitializeAllData() {
+    console.log('🔄 Reinicializando todos los datos...');
     this.clearAllData();
-    await this.initializeAllData();
+    await this.initializeAllData(true);
+    console.log('  ✓ Datos reinicializados completamente');
   }
 }

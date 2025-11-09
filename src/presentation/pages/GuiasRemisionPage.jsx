@@ -72,7 +72,18 @@ export const GuiasRemisionPage = () => {
 
   const handleSubmitForm = async (formData) => {
     try {
+      console.log('🔄 Iniciando creación de guía con:', formData);
       const result = await createGuiaRemision.execute(formData);
+      console.log('✅ Guía creada exitosamente:', result);
+
+      // Verificar que el resultado tenga los datos necesarios
+      if (!result || !result.guia || !result.recibo) {
+        throw new Error('La respuesta del servidor no contiene los datos esperados');
+      }
+
+      console.log('📝 Recibo de la guía:', result.recibo);
+      console.log('📦 Items del recibo:', result.recibo.items);
+
       notification.success('Guía de remisión generada exitosamente');
       setIsModalOpen(false);
       await loadGuias();
@@ -82,7 +93,8 @@ export const GuiasRemisionPage = () => {
       setSelectedReciboData(result.recibo);
       setIsPreviewOpen(true);
     } catch (error) {
-      console.error('Error al crear guía de remisión:', error);
+      console.error('❌ Error al crear guía de remisión:', error);
+      console.error('Stack trace:', error.stack);
       notification.error(`Error: ${error.message}`);
     }
   };
@@ -359,10 +371,33 @@ const GuiaRemisionForm = ({ recibos, transportistas, onSubmit, onCancel }) => {
 const GuiaRemisionPreview = ({ guia, recibo, onClose }) => {
   const notification = useNotification();
 
+  // Validar que todos los datos necesarios existan
   if (!guia || !recibo || !recibo.items || !Array.isArray(recibo.items)) {
+    console.error('Datos inválidos en GuiaRemisionPreview:', { guia, recibo });
     return (
       <div style={{ padding: '20px', textAlign: 'center' }}>
         <p>Error: No se puede mostrar la vista previa. Faltan datos.</p>
+        <Button onClick={onClose} variant="secondary" style={{ marginTop: '20px' }}>
+          Cerrar
+        </Button>
+      </div>
+    );
+  }
+
+  // Validar que cada item tenga los campos necesarios
+  const itemsValidos = recibo.items.every(item =>
+    item &&
+    item.nombreMaterial &&
+    typeof item.peso === 'number' &&
+    (typeof item.precioUnitario === 'number' || typeof item.precioPorKg === 'number') &&
+    typeof item.subtotal === 'number'
+  );
+
+  if (!itemsValidos) {
+    console.error('Items inválidos en recibo:', recibo.items);
+    return (
+      <div style={{ padding: '20px', textAlign: 'center' }}>
+        <p>Error: Los items del recibo tienen datos incompletos.</p>
         <Button onClick={onClose} variant="secondary" style={{ marginTop: '20px' }}>
           Cerrar
         </Button>
@@ -464,9 +499,10 @@ const GuiaRemisionPreview = ({ guia, recibo, onClose }) => {
         doc.addPage();
         yPos = 20;
       }
+      const precio = item.precioUnitario || item.precioPorKg || 0;
       doc.text(item.nombreMaterial, 25, yPos);
       doc.text(item.peso.toFixed(2), 100, yPos);
-      doc.text(`S/ ${item.precioUnitario.toFixed(2)}`, 135, yPos);
+      doc.text(`S/ ${precio.toFixed(2)}`, 135, yPos);
       doc.text(`S/ ${item.subtotal.toFixed(2)}`, 170, yPos);
       yPos += 7;
     });
@@ -590,14 +626,17 @@ const GuiaRemisionPreview = ({ guia, recibo, onClose }) => {
               </tr>
             </thead>
             <tbody>
-              {recibo.items.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.nombreMaterial}</td>
-                  <td>{item.peso.toFixed(2)}</td>
-                  <td>S/ {item.precioUnitario.toFixed(2)}</td>
-                  <td>S/ {item.subtotal.toFixed(2)}</td>
-                </tr>
-              ))}
+              {recibo.items.map((item, index) => {
+                const precio = item.precioUnitario || item.precioPorKg || 0;
+                return (
+                  <tr key={index}>
+                    <td>{item.nombreMaterial}</td>
+                    <td>{item.peso.toFixed(2)}</td>
+                    <td>S/ {precio.toFixed(2)}</td>
+                    <td>S/ {item.subtotal.toFixed(2)}</td>
+                  </tr>
+                );
+              })}
             </tbody>
             <tfoot>
               <tr>

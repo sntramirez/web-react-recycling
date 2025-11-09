@@ -38,10 +38,13 @@ export class ReciboItem {
    */
   static fromJSON(json) {
     const item = Object.create(ReciboItem.prototype);
+    // Manejar ambos nombres de campo para retrocompatibilidad
+    const precioUnitario = json.precioUnitario || json.precioPorKg;
     Object.assign(item, {
       materialId: json.materialId,
       nombreMaterial: json.nombreMaterial,
-      precioPorKg: json.precioUnitario || json.precioPorKg, // Soportar ambos nombres
+      precioPorKg: precioUnitario,
+      precioUnitario: precioUnitario, // Agregar también como precioUnitario
       peso: json.peso,
       unidad: json.unidad,
       subtotal: json.subtotal,

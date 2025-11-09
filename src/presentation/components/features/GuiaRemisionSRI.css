@@ -1,0 +1,256 @@
+.guia-remision-sri {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.guia-content {
+  background: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  max-height: 70vh;
+  overflow-y: auto;
+  font-family: 'Arial', sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Encabezado */
+.guia-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #333;
+  margin-bottom: 15px;
+}
+
+.empresa-info h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.empresa-info p {
+  margin: 3px 0;
+  font-size: 10px;
+  color: #555;
+}
+
+.comprobante-info {
+  min-width: 200px;
+}
+
+.info-box {
+  border: 2px solid #333;
+  padding: 10px;
+  text-align: center;
+}
+
+.info-box p {
+  margin: 4px 0;
+  font-size: 9px;
+}
+
+.info-box h3 {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 8px 0;
+  color: #000;
+}
+
+.info-box .small {
+  font-size: 7px;
+  word-break: break-all;
+  line-height: 1.2;
+}
+
+/* Información adicional */
+.info-adicional {
+  background-color: #f8f8f8;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  font-size: 9px;
+}
+
+.info-adicional p {
+  margin: 3px 0;
+}
+
+.clave-acceso {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #ccc;
+}
+
+.clave-acceso strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 9px;
+}
+
+.clave-acceso p {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  word-break: break-all;
+  color: #000;
+}
+
+/* Secciones */
+.seccion {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+}
+
+.seccion h4 {
+  font-size: 11px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  padding: 5px;
+  background-color: #e0e0e0;
+  border-left: 4px solid #333;
+  color: #000;
+}
+
+.seccion p {
+  margin: 5px 0;
+  font-size: 10px;
+}
+
+.seccion p strong {
+  font-weight: bold;
+  color: #000;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Tabla de productos */
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 9px;
+}
+
+.tabla-productos th {
+  background-color: #333;
+  color: white;
+  padding: 8px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 9px;
+  border: 1px solid #222;
+}
+
+.tabla-productos td {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+.tabla-productos tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tabla-productos tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.tabla-productos tfoot td {
+  background-color: #e8e8e8;
+  font-weight: bold;
+  border-top: 2px solid #333;
+  padding: 8px;
+}
+
+/* Pie de página */
+.guia-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid #333;
+  text-align: center;
+}
+
+.guia-footer .small {
+  font-size: 8px;
+  color: #666;
+  margin: 3px 0;
+  font-style: italic;
+}
+
+/* Botones de acción */
+.guia-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-top: 2px solid #ddd;
+}
+
+/* Estilos de impresión */
+@media print {
+  .guia-content {
+    max-height: none;
+    overflow: visible;
+    border: none;
+    padding: 0;
+  }
+
+  .guia-actions {
+    display: none !important;
+  }
+
+  .guia-remision-sri {
+    max-width: 100%;
+  }
+
+  /* Ajustes para mantener formato en impresión */
+  .seccion {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .tabla-productos {
+    break-inside: auto;
+  }
+
+  .tabla-productos tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .guia-header {
+    grid-template-columns: 1fr;
+  }
+
+  .comprobante-info {
+    min-width: 100%;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .guia-content {
+    padding: 15px;
+    max-height: 60vh;
+  }
+
+  .guia-actions {
+    flex-direction: column;
+  }
+}

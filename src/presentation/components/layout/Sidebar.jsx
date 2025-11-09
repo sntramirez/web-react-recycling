@@ -11,7 +11,8 @@ export const Sidebar = ({ currentPage, onNavigate }) => {
     { id: 'materiales', label: 'Materiales', icon: '📦', section: 'materiales' },
     { id: 'personas', label: 'Personas/Vendedores', icon: '👥', section: 'personas' },
     { id: 'transportistas', label: 'Transportistas', icon: '🚚', section: 'transportistas' },
-    { id: 'guias', label: 'Guías de Remisión', icon: '📋', section: 'guias' }
+    { id: 'guias', label: 'Guías de Remisión', icon: '📋', section: 'guias' },
+    { id: 'parametrizacion', label: 'Configuración Empresa', icon: '⚙️', section: 'materiales' }
   ];
 
   // Filtrar items según permisos

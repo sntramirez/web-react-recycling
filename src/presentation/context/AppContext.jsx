@@ -4,6 +4,7 @@ import { LocalStorageReciboRepository } from '../../infrastructure/repositories/
 import { LocalStoragePersonaRepository } from '../../infrastructure/repositories/LocalStoragePersonaRepository';
 import { LocalStorageTransportistaRepository } from '../../infrastructure/repositories/LocalStorageTransportistaRepository';
 import { LocalStorageGuiaRemisionRepository } from '../../infrastructure/repositories/LocalStorageGuiaRemisionRepository';
+import { LocalStorageEmpresaConfigRepository } from '../../infrastructure/repositories/LocalStorageEmpresaConfigRepository';
 import { DataInitializationService } from '../../infrastructure/services/DataInitializationService';
 import { CreateMaterial } from '../../application/use-cases/material/CreateMaterial';
 import { GetAllMaterials } from '../../application/use-cases/material/GetAllMaterials';
@@ -23,6 +24,8 @@ import { DeleteTransportista } from '../../application/use-cases/transportista/D
 import { CreateGuiaRemision } from '../../application/use-cases/guia-remision/CreateGuiaRemision';
 import { GetAllGuiasRemision } from '../../application/use-cases/guia-remision/GetAllGuiasRemision';
 import { GetGuiaRemisionById } from '../../application/use-cases/guia-remision/GetGuiaRemisionById';
+import { GetEmpresaConfig } from '../../application/use-cases/empresa-config/GetEmpresaConfig';
+import { UpdateEmpresaConfig } from '../../application/use-cases/empresa-config/UpdateEmpresaConfig';
 
 const AppContext = createContext(null);
 
@@ -40,6 +43,7 @@ export const AppProvider = ({ children }) => {
   const personaRepository = new LocalStoragePersonaRepository();
   const transportistaRepository = new LocalStorageTransportistaRepository();
   const guiaRemisionRepository = new LocalStorageGuiaRemisionRepository();
+  const empresaConfigRepository = new LocalStorageEmpresaConfigRepository();
 
   // Inicializar casos de uso de Material
   const createMaterial = new CreateMaterial(materialRepository);
@@ -69,6 +73,10 @@ export const AppProvider = ({ children }) => {
   const getAllGuiasRemision = new GetAllGuiasRemision(guiaRemisionRepository);
   const getGuiaRemisionById = new GetGuiaRemisionById(guiaRemisionRepository);
 
+  // Inicializar casos de uso de Configuración de Empresa
+  const getEmpresaConfig = new GetEmpresaConfig(empresaConfigRepository);
+  const updateEmpresaConfig = new UpdateEmpresaConfig(empresaConfigRepository);
+
   const value = {
     // Casos de uso de Material
     createMaterial,
@@ -93,6 +101,9 @@ export const AppProvider = ({ children }) => {
     createGuiaRemision,
     getAllGuiasRemision,
     getGuiaRemisionById,
+    // Casos de uso de Configuración de Empresa
+    getEmpresaConfig,
+    updateEmpresaConfig,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -8,11 +8,13 @@ import personasData from '../../data/personas.json';
 import transportistasData from '../../data/transportistas.json';
 import recibosData from '../../data/recibos.json';
 import guiasRemisionData from '../../data/guiasRemision.json';
+import empresaConfigData from '../../data/empresaConfig.json';
 import { Material } from '../../domain/entities/Material';
 import { Persona } from '../../domain/entities/Persona';
 import { Transportista } from '../../domain/entities/Transportista';
 import { Recibo } from '../../domain/entities/Recibo';
 import { GuiaRemision } from '../../domain/entities/GuiaRemision';
+import { EmpresaConfig } from '../../domain/entities/EmpresaConfig';
 
 export class DataInitializationService {
   static STORAGE_KEYS = {
@@ -21,6 +23,7 @@ export class DataInitializationService {
     TRANSPORTISTAS: 'transportistas',
     RECIBOS: 'recibos',
     GUIAS_REMISION: 'guiasRemision',
+    EMPRESA_CONFIG: 'empresaConfig',
     INITIALIZED: 'dataInitialized',
     VERSION: 'dataVersion'
   };
@@ -83,6 +86,7 @@ export class DataInitializationService {
       const needsTransportistas = force || !this.hasValidData(this.STORAGE_KEYS.TRANSPORTISTAS);
       const needsRecibos = force || !this.hasValidData(this.STORAGE_KEYS.RECIBOS);
       const needsGuias = force || !this.hasValidData(this.STORAGE_KEYS.GUIAS_REMISION);
+      const needsEmpresaConfig = force || !this.hasValidData(this.STORAGE_KEYS.EMPRESA_CONFIG);
 
       // Mostrar estado
       console.log('📊 Estado de datos:', {
@@ -90,7 +94,8 @@ export class DataInitializationService {
         personas: needsPersonas ? '❌ Faltan' : '✅ OK',
         transportistas: needsTransportistas ? '❌ Faltan' : '✅ OK',
         recibos: needsRecibos ? '❌ Faltan' : '✅ OK',
-        guias: needsGuias ? '❌ Faltan' : '✅ OK'
+        guias: needsGuias ? '❌ Faltan' : '✅ OK',
+        empresaConfig: needsEmpresaConfig ? '❌ Faltan' : '✅ OK'
       });
 
       // Inicializar solo lo que falta
@@ -99,6 +104,7 @@ export class DataInitializationService {
       if (needsTransportistas) await this.initializeTransportistas();
       if (needsRecibos) await this.initializeRecibos();
       if (needsGuias) await this.initializeGuiasRemision();
+      if (needsEmpresaConfig) await this.initializeEmpresaConfig();
 
       this.markAsInitialized();
       console.log('✅ Datos mock verificados e inicializados exitosamente');
@@ -244,6 +250,20 @@ export class DataInitializationService {
       JSON.stringify(guias.map(g => g.toJSON()))
     );
     console.log(`  ✓ ${guias.length} guías de remisión inicializadas`);
+  }
+
+  /**
+   * Inicializa configuración de empresa
+   */
+  static async initializeEmpresaConfig() {
+    console.log("🏢 Inicializando configuración de empresa...");
+
+    const empresaConfig = new EmpresaConfig(empresaConfigData);
+    localStorage.setItem(
+      this.STORAGE_KEYS.EMPRESA_CONFIG,
+      JSON.stringify(empresaConfig.toJSON())
+    );
+    console.log(`  ✓ Configuración de empresa inicializada`);
   }
 
   /**

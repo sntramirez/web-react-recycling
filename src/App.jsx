@@ -10,6 +10,7 @@ import { RecibosPage } from './presentation/pages/RecibosPage';
 import { PersonasPage } from './presentation/pages/PersonasPage';
 import { TransportistasPage } from './presentation/pages/TransportistasPage';
 import { GuiasRemisionPage } from './presentation/pages/GuiasRemisionPage';
+import { ParametrizacionPage } from './presentation/pages/ParametrizacionPage';
 import { Header } from './presentation/components/layout/Header';
 import { Sidebar } from './presentation/components/layout/Sidebar';
 import './App.css';
@@ -61,6 +62,7 @@ function AppContent() {
               {currentPage === 'personas' && PermissionsService.canAccessSection(user, 'personas') && <PersonasPage />}
               {currentPage === 'transportistas' && PermissionsService.canAccessSection(user, 'transportistas') && <TransportistasPage />}
               {currentPage === 'guias' && PermissionsService.canAccessSection(user, 'guias') && <GuiasRemisionPage />}
+              {currentPage === 'parametrizacion' && PermissionsService.canAccessSection(user, 'materiales') && <ParametrizacionPage />}
             </main>
           </div>
 
